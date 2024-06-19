@@ -1,0 +1,54 @@
+.imagen-slide {
+  opacity: 0;
+  transition: 1s;
+  &.loaded {
+    opacity: 1;
+  }
+}
+
+.slide {
+  max-width: 100%;
+  height: auto;
+  opacity: 0;
+  transition: opacity 0.75s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.imagen {
+  height: 500px;
+  object-fit: cover;
+}
+
+.previous {
+  color: white;
+  height: auto;
+  display: flex;
+  align-items: center;
+}
+
+.previous:hover {
+  background-color: rgb(0 0 0 / 0.1);
+}
+
+.previous img {
+  width: 2.5rem;
+  cursor: pointer;
+}
+
+.next {
+  height: auto;
+  display: flex;
+  align-items: center;
+}
+
+.next:hover {
+  background-color: rgb(0 0 0 / 0.1);
+}
+
+.next img {
+  width: 2.5rem;
+  cursor: pointer;
+}

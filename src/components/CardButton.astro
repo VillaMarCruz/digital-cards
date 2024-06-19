@@ -1,0 +1,13 @@
+---
+const { href, color } = Astro.props;
+---
+
+<a
+  class=`w-full text-center border py-3 flex justify-center gap-3 ${color}`
+  href={href}
+  target="_blank"
+>
+  <slot name="before" />
+  <slot />
+  <slot name="after" />
+</a>
