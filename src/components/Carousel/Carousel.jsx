@@ -3,13 +3,21 @@ import estilos from "./Carousel.module.css";
 
 export default function Carousel({ images, autoplay = false }) {
   const quantity = images?.length; // CANTIDAD DE IMAGENES
-  const imagesPerSlide = 2; // Establece el número de imágenes por slide
+  const imagesPerSlide = 3; // Establece el número de imágenes por slide
 
   const [selectedIndex, setSelectedIndex] = useState(0); // SELECTOR
-  const [selectedImages, setSelectedImages] = useState([images[0], images[1]]);
+  const [selectedImages, setSelectedImages] = useState([]);
   const [loaded, setLoaded] = useState(false); //CARGAR
 
   // [0,1,2,3,4]
+
+  const mod = () => {
+    const startImageIndex = 0;
+    const endImageIndex = startImageIndex + imagesPerSlide;
+
+    const imagesNew = images.slice(startImageIndex, endImageIndex);
+    setSelectedImages(imagesNew);
+  };
 
   const selectNewImage = (index, images, next = true) => {
     setLoaded(false);
@@ -29,7 +37,8 @@ export default function Carousel({ images, autoplay = false }) {
       }, 1000);
       return () => clearInterval(interval);
     }
-  }, [selectedIndex, images, autoplay]);
+    mod();
+  }, []);
 
   const previous = () => {
     selectNewImage(selectedIndex, images, false);
